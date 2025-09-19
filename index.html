@@ -1,61 +1,76 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Porta do Céu</title>
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {font-family: Arial, sans-serif; margin:0; background:white; color:#333;}
+    header {background:#a00; color:white; padding:10px; display:flex; align-items:center; justify-content:space-between;}
+    header h1 {margin:0; font-size:1.5rem;}
+    nav ul {list-style:none; margin:0; padding:0; display:flex; gap:20px;}
+    nav ul li {display:inline;}
+    nav ul li a {color:white; text-decoration:none; font-weight:bold;}
+    .orcamento-btn {background:gold; color:#a00; padding:8px 12px; border-radius:5px; font-weight:bold; text-decoration:none;}
+    .banner {text-align:center; padding:50px; background:linear-gradient(to bottom,#fff,#fceaea);}
+    .banner h2 {color:#a00; font-size:2rem;}
+    .produtos {padding:20px;}
+    .produtos h2 {color:#a00;}
+    .grid {display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:15px;}
+    .item {border:1px solid #ddd; padding:15px; text-align:center; background:white;}
+    .item h3 {margin:10px 0; color:#333;}
+    .item p {color:#a00; font-weight:bold;}
+    footer {background:#222; color:white; text-align:center; padding:20px; margin-top:30px;}
+  </style>
 </head>
 <body>
+
   <header>
-    <img src="img/logo.png" alt="Porta do Céu" class="logo">
+    <h1>Porta do Céu</h1>
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Artigos Religiosos</a></li>
         <li><a href="#">Presentes</a></li>
-        <li><a href="#">Artesanatos</a></li>
         <li><a href="#">Cestas</a></li>
         <li><a href="#">Contato</a></li>
       </ul>
     </nav>
-    <a href="#orcamento" class="botao-orcamento">📩 Pedir Orçamento</a>
+    <a href="#orcamento" class="orcamento-btn">📩 Orçamento</a>
   </header>
 
-  <main>
-    <section class="banner">
-      <h1>Bem-vindo à Porta do Céu</h1>
-      <p>Artigos religiosos, presentes e artesanatos com fé e amor</p>
-    </section>
+  <section class="banner">
+    <h2>Bem-vindo à Porta do Céu</h2>
+    <p>Artigos religiosos, presentes e lembranças para todas as ocasiões</p>
+  </section>
 
-    <section class="produtos">
-      <h2>Catálogo</h2>
-      <div class="grid">
-        <div class="item"><img src="img/produtos/1.png"><h3>Terço de Pérolas</h3><p>€14,90</p></div>
-        <div class="item"><img src="img/produtos/2.png"><h3>Bíblia Pequena</h3><p>€12,00</p></div>
-        <div class="item"><img src="img/produtos/3.png"><h3>Imagem de Nossa Senhora</h3><p>€39,90</p></div>
-        <div class="item"><img src="img/produtos/4.png"><h3>Cesta de Natal</h3><p>€25,00</p></div>
-        <div class="item"><img src="img/produtos/5.png"><h3>Brinco Artesanal</h3><p>€12,90</p></div>
-      </div>
-    </section>
+  <section class="produtos">
+    <h2>Catálogo (exemplo fictício)</h2>
+    <div class="grid">
+      <div class="item"><h3>Terço de Pérolas</h3><p>€14,90</p></div>
+      <div class="item"><h3>Bíblia Pequena</h3><p>€12,00</p></div>
+      <div class="item"><h3>Imagem de Nossa Senhora</h3><p>€39,90</p></div>
+      <div class="item"><h3>Cesta de Natal</h3><p>€25,00</p></div>
+      <div class="item"><h3>Brinco Artesanal</h3><p>€12,90</p></div>
+      <div class="item"><h3>Vela Religiosa</h3><p>€8,50</p></div>
+    </div>
+  </section>
 
-    <section id="orcamento" class="orcamento">
-      <h2>Pedir Orçamento</h2>
-      <form>
-        <label>Nome:</label><input type="text" value="Jaque"><br>
-        <label>Telemóvel:</label><input type="text" value="933 618 200"><br>
-        <label>Email:</label><input type="email" value="jackiie.cardoso@gmail.com"><br>
-        <label>Mensagem:</label><textarea placeholder="Escreva aqui seu pedido"></textarea><br>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-  </main>
+  <section id="orcamento" class="orcamento">
+    <h2 style="text-align:center; color:#a00;">Pedir Orçamento</h2>
+    <form style="max-width:400px; margin:auto; display:flex; flex-direction:column; gap:10px;">
+      <input type="text" value="Jaque" readonly>
+      <input type="text" value="933 618 200" readonly>
+      <input type="email" value="jackiie.cardoso@gmail.com" readonly>
+      <textarea placeholder="Escreva aqui seu pedido"></textarea>
+      <button type="submit" style="background:#a00; color:white; padding:10px; border:none;">Enviar</button>
+    </form>
+  </section>
 
   <footer>
     <p>© 2025 Porta do Céu - Todos os direitos reservados</p>
     <p>Contato: Jaque | Tel: 933 618 200 | Email: jackiie.cardoso@gmail.com</p>
   </footer>
 
-  <script src="js/script.js"></script>
 </body>
 </html>
