@@ -6,21 +6,20 @@
   <title>Porta do Céu</title>
   <style>
     :root {
-      --vermelho: #a00;
-      --dourado: #d4af37;
+      --rosa: #f8c8dc;     /* Rosa bebê */
+      --dourado: #d4af37;  /* Dourado */
     }
-    body {font-family: Arial, sans-serif; margin:0; background:#fff; color:#333;}
+    body {font-family: Arial, sans-serif; margin:0; background:#fff; color: var(--dourado);}
+
     /* Header */
     header {
-      background: var(--vermelho);
-      color: #fff;
+      background: var(--rosa);
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
     }
-    /* Menu do topo */
     .top-nav ul {
       list-style: none;
       display: flex;
@@ -29,28 +28,25 @@
       padding: 0;
     }
     .top-nav a {
-      color: #fff;
+      color: var(--dourado);
       text-decoration: none;
       font-weight: bold;
     }
-    /* Logo + botão orçamento */
     .logo-box {
       display: flex;
       align-items: center;
       gap: 20px;
     }
-    .logo {
-      height: 58px;
-      width: auto;
-    }
+    .logo {height: 58px; width: auto;}
     .btn-orc {
-      background: gold;
-      color: var(--vermelho);
+      background: var(--dourado);
+      color: var(--rosa);
       font-weight: bold;
       padding: 8px 12px;
       border-radius: 6px;
       text-decoration: none;
     }
+
     /* Banner */
     .banner {
       background: linear-gradient(to bottom, #ffffff, #fde9e9);
@@ -64,8 +60,8 @@
       gap: 24px;
       align-items: center;
     }
-    .hero-title {color: var(--vermelho); font-size: 2.1rem; margin:0 0 8px;}
-    .hero-sub {margin:0; color:#555;}
+    .hero-title {color: var(--rosa); font-size: 2.1rem; margin:0 0 8px;}
+    .hero-sub {margin:0; color: var(--dourado);}
     .santa-box {text-align:right;}
     .santa-img {
       max-height: 360px; 
@@ -74,9 +70,10 @@
       background:#fff;
       display: inline-block;
     }
+
     /* Produtos */
     .section {padding:24px 16px;}
-    .section h2 {max-width:1100px; margin:0 auto 16px; color:var(--vermelho);}
+    .section h2 {max-width:1100px; margin:0 auto 16px; color:var(--rosa);}
     .grid {
       max-width:1100px;
       margin:0 auto;
@@ -85,28 +82,35 @@
       gap:18px;
     }
     .card {
-      border:1px solid #ddd; border-radius:10px; padding:16px; background:#fff;
+      border:1px solid #ddd;
+      border-radius:10px;
+      padding:16px;
+      background:#fff;
       box-shadow: 0 1px 4px rgba(0,0,0,.06);
       text-align:center;
     }
-    .card h3 {margin:6px 0 8px; font-size:1.05rem;}
-    .card .preco {color: var(--vermelho); font-weight:700;}
+    .card h3 {margin:6px 0 8px; font-size:1.05rem; color: var(--dourado);}
+    .card .preco {color: var(--rosa); font-weight:700;}
+    .card small {color: var(--dourado);}
+
     /* Orçamento */
     .orcamento {background:#f8f8f8; padding:34px 16px;}
-    .orcamento h2 {text-align:center; color:var(--vermelho); margin-top:0;}
+    .orcamento h2 {text-align:center; color:var(--rosa); margin-top:0;}
     .form {
       max-width:420px; margin:12px auto 0; display:flex; flex-direction:column; gap:10px;
     }
     .form input, .form textarea {
       padding:10px 12px; border:1px solid #ccc; border-radius:8px; font-size:1rem; width:100%;
-      background:#fff;
+      background:#fff; color: var(--dourado);
     }
     .form button {
-      background: var(--vermelho); color:#fff; border:none; border-radius:8px;
+      background: var(--rosa); color: var(--dourado); border:none; border-radius:8px;
       padding:12px; font-weight:700; cursor:pointer;
     }
+
     /* Footer */
-    footer {background:#222; color:#fff; text-align:center; padding:18px; font-size:.95rem;}
+    footer {background:#222; color: var(--dourado); text-align:center; padding:18px; font-size:.95rem;}
+
     /* Responsivo */
     @media (max-width: 860px) {
       .banner-wrap {grid-template-columns: 1fr;}
@@ -120,7 +124,6 @@
 <body>
 
   <header>
-    <!-- menu principal -->
     <nav class="top-nav">
       <ul>
         <li><a href="#topo">Home</a></li>
@@ -130,8 +133,6 @@
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
-
-    <!-- logo + orçamento -->
     <div class="logo-box">
       <img src="Logoportadoceu.jpg" alt="Porta do Céu" class="logo" />
       <a href="#orcamento" class="btn-orc">📩 Orçamento</a>
@@ -145,15 +146,22 @@
         <p class="hero-sub">Artigos religiosos, presentes e lembranças para todas as ocasiões</p>
       </div>
       <div class="santa-box">
-        <!-- Chamando a imagem salva no GitHub -->
         <img src="santa-Filomena.jpg" alt="Santa Filomena" class="santa-img" />
       </div>
     </div>
   </section>
 
   <section id="produtos" class="section">
-    <h2>Catálogo (exemplo fictício)</h2>
+    <h2>Catálogo</h2>
     <div class="grid">
+      <!-- Vela de Cera de Abelha (primeiro item) -->
+      <div class="card">
+        <img src="vela.cera.jaque1.jpg" alt="Vela de cera de abelha" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Vela de cera de abelha</h3>
+        <div class="preco">€2</div>
+        <small>Frete a combinar</small>
+      </div>
+
       <div class="card"><h3>Terço de Pérolas</h3><div class="preco">€14,90</div></div>
       <div class="card"><h3>Bíblia Pequena</h3><div class="preco">€12,00</div></div>
       <div class="card"><h3>Imagem de Nossa Senhora</h3><div class="preco">€39,90</div></div>
