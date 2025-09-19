@@ -17,8 +17,18 @@
       background:gold; color:#a00; padding:8px 12px;
       border-radius:5px; font-weight:bold; text-decoration:none;
     }
-    .banner {text-align:center; padding:50px 20px; background:linear-gradient(to bottom,#fff,#fceaea);}
-    .banner h2 {color:#a00; font-size:2rem;}
+    .banner {
+      text-align:center; padding:50px 20px;
+      background:linear-gradient(to bottom,#fff,#fceaea);
+    }
+    .banner h2 {color:#a00; font-size:2rem; margin-bottom:10px;}
+    .banner p {margin:0 0 20px;}
+    .banner-content {
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+      max-width:1000px; margin:auto;
+    }
+    .banner-content div {flex:1; padding:10px;}
+    .banner-content img {max-height:180px;}
     .produtos {padding:20px;}
     .produtos h2 {color:#a00; margin-bottom:20px;}
     .grid {
@@ -52,7 +62,7 @@
 <body>
 
   <header>
-    <img src="img/logo.png" alt="Porta do Céu">
+    <img src="Logoportadoceu.jpg" alt="Porta do Céu">
     <nav>
       <ul>
         <li><a href="#topo">Home</a></li>
@@ -66,8 +76,16 @@
   </header>
 
   <section id="topo" class="banner">
-    <h2>Bem-vindo à Porta do Céu</h2>
-    <p>Artigos religiosos, presentes e lembranças para todas as ocasiões</p>
+    <div class="banner-content">
+      <div>
+        <h2>Bem-vindo à Porta do Céu</h2>
+        <p>Artigos religiosos, presentes e lembranças para todas as ocasiões</p>
+      </div>
+      <div>
+        <!-- Aqui deve subir a imagem "santa-filomena.png" dentro do mesmo repositório -->
+        <img src="santa-filomena.png" alt="Santa Filomena">
+      </div>
+    </div>
   </section>
 
   <section id="produtos" class="produtos">
