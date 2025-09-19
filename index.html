@@ -7,9 +7,9 @@
   <style>
     :root {
       --rosa: #f8c8dc;     /* Rosa bebê */
-      --dourado: #d4af37;  /* Dourado */
+      --dourado: #d4af37;  /* ainda usado no botão */
     }
-    body {font-family: Arial, sans-serif; margin:0; background:#fff; color: var(--dourado);}
+    body {font-family: Arial, sans-serif; margin:0; background:#fff; color: #000;}
 
     /* Header */
     header {
@@ -28,7 +28,7 @@
       padding: 0;
     }
     .top-nav a {
-      color: var(--dourado);
+      color: #000;  /* preto nos links */
       text-decoration: none;
       font-weight: bold;
     }
@@ -60,8 +60,8 @@
       gap: 24px;
       align-items: center;
     }
-    .hero-title {color: var(--rosa); font-size: 2.1rem; margin:0 0 8px;}
-    .hero-sub {margin:0; color: var(--dourado);}
+    .hero-title {color: #000; font-size: 2.1rem; margin:0 0 8px;}
+    .hero-sub {color: #000; font-weight: bold; margin:0;}
     .santa-box {text-align:right;}
     .santa-img {
       max-height: 360px; 
@@ -73,7 +73,7 @@
 
     /* Produtos */
     .section {padding:24px 16px;}
-    .section h2 {max-width:1100px; margin:0 auto 16px; color:var(--rosa);}
+    .section h2 {max-width:1100px; margin:0 auto 16px; color:#000;}
     .grid {
       max-width:1100px;
       margin:0 auto;
@@ -89,27 +89,33 @@
       box-shadow: 0 1px 4px rgba(0,0,0,.06);
       text-align:center;
     }
-    .card h3 {margin:6px 0 8px; font-size:1.05rem; color: var(--dourado);}
-    .card .preco {color: var(--rosa); font-weight:700;}
-    .card small {color: var(--dourado);}
+    .card h3 {margin:6px 0 8px; font-size:1.05rem; color:#000;}
+    .card .preco {color: #000; font-weight:700;}
+    .card small {color: #000;}
 
     /* Orçamento */
     .orcamento {background:#f8f8f8; padding:34px 16px;}
-    .orcamento h2 {text-align:center; color:var(--rosa); margin-top:0;}
+    .orcamento h2 {text-align:center; color:#000; margin-top:0;}
     .form {
       max-width:420px; margin:12px auto 0; display:flex; flex-direction:column; gap:10px;
     }
     .form input, .form textarea {
       padding:10px 12px; border:1px solid #ccc; border-radius:8px; font-size:1rem; width:100%;
-      background:#fff; color: var(--dourado);
+      background:#fff; color:#000;
     }
     .form button {
-      background: var(--rosa); color: var(--dourado); border:none; border-radius:8px;
+      background: var(--rosa); color: #000; border:none; border-radius:8px;
       padding:12px; font-weight:700; cursor:pointer;
     }
 
     /* Footer */
-    footer {background:#222; color: var(--dourado); text-align:center; padding:18px; font-size:.95rem;}
+    footer {
+      background:#222; 
+      color: #000; /* contatos e copyright agora em preto */
+      text-align:center; 
+      padding:18px; 
+      font-size:.95rem;
+    }
 
     /* Responsivo */
     @media (max-width: 860px) {
@@ -154,7 +160,7 @@
   <section id="produtos" class="section">
     <h2>Catálogo</h2>
     <div class="grid">
-      <!-- 1º - Vela de Cera de Abelha (produto em destaque) -->
+      <!-- 1º - Vela de Cera de Abelha -->
       <div class="card">
         <img src="vela.cera.jaque1.jpg" alt="Vela de cera de abelha" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
         <h3>Vela de cera de abelha</h3>
@@ -162,15 +168,135 @@
         <small>Frete a combinar</small>
       </div>
 
-      <!-- Produtos diversificados -->
-      <div class="card"><h3>Terço de Pérolas</h3><div class="preco">€14,90</div></div>
-      <div class="card"><h3>Bíblia Pequena</h3><div class="preco">€12,00</div></div>
-      <div class="card"><h3>Imagem de Nossa Senhora</h3><div class="preco">€39,90</div></div>
-      <div class="card"><h3>Cesta de Natal</h3><div class="preco">€25,00</div></div>
-      <div class="card"><h3>Brinco Artesanal</h3><div class="preco">€12,90</div></div>
-      <div class="card"><h3>Vela Religiosa</h3><div class="preco">€8,50</div></div>
+      <!-- 2º - Terço -->
+      <div class="card">
+        <img src="terco-completo.jpg" alt="Terço Católico" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Terço Católico</h3>
+        <div class="preco">€15,00</div>
+        <small>Produto devocional</small>
+      </div>
 
-      <!-- Último - Vela de Vassouras (fechando com outro produto da Jaque) -->
+      <!-- 3º - Catecismo -->
+      <div class="card">
+        <img src="catecismo.jpg" alt="Catecismo Infantil" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Catecismo Infantil</h3>
+        <div class="preco">€12,00</div>
+        <small>Livro educativo religioso</small>
+      </div>
+
+      <!-- 4º - Bíblia Sagrada -->
+      <div class="card">
+        <img src="biblia.jpg" alt="Bíblia Sagrada" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Bíblia Sagrada</h3>
+        <div class="preco">€18,50</div>
+        <small>Edição clássica</small>
+      </div>
+
+      <!-- 5º - Nossa Senhora Aparecida -->
+      <div class="card">
+        <img src="nossa-senhora.jpg" alt="Imagem Nossa Senhora Aparecida" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Nossa Senhora Aparecida</h3>
+        <div class="preco">€35,00</div>
+        <small>Imagem 20cm</small>
+      </div>
+
+      <!-- 6º - Crucifixo de Parede -->
+      <div class="card">
+        <img src="crucifixo.jpg" alt="Crucifixo de Parede" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Crucifixo de Parede</h3>
+        <div class="preco">€22,00</div>
+        <small>Madeira nobre</small>
+      </div>
+
+      <!-- 7º - Água Benta -->
+      <div class="card">
+        <img src="agua-benta.jpg" alt="Água Benta" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Água Benta</h3>
+        <div class="preco">€5,00</div>
+        <small>Frasco 100ml</small>
+      </div>
+
+      <!-- 8º - Medalha Milagrosa -->
+      <div class="card">
+        <img src="medalha.jpg" alt="Medalha Milagrosa" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Medalha Milagrosa</h3>
+        <div class="preco">€8,50</div>
+        <small>Prata 925</small>
+      </div>
+
+      <!-- 9º - Livro de Orações -->
+      <div class="card">
+        <img src="livro-oracoes.jpg" alt="Livro de Orações" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Livro de Orações</h3>
+        <div class="preco">€14,00</div>
+        <small>Capa dura</small>
+      </div>
+
+      <!-- 10º - Escapulário -->
+      <div class="card">
+        <img src="escapulario.jpg" alt="Escapulário do Carmo" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Escapulário do Carmo</h3>
+        <div class="preco">€6,50</div>
+        <small>Tecido tradicional</small>
+      </div>
+
+      <!-- 11º - Anjo da Guarda -->
+      <div class="card">
+        <img src="anjo-guarda.jpg" alt="Anjo da Guarda" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Anjo da Guarda</h3>
+        <div class="preco">€28,00</div>
+        <small>Resina 15cm</small>
+      </div>
+
+      <!-- 12º - Vela Votiva -->
+      <div class="card">
+        <img src="vela-votiva.jpg" alt="Vela Votiva" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Vela Votiva</h3>
+        <div class="preco">€3,50</div>
+        <small>7 dias</small>
+      </div>
+
+      <!-- 13º - Colar Religioso -->
+      <div class="card">
+        <img src="colar-religioso.jpg" alt="Colar Religioso" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Colar Religioso</h3>
+        <div class="preco">€16,00</div>
+        <small>Corrente dourada</small>
+      </div>
+
+      <!-- 14º - Quadro Sagrado Coração -->
+      <div class="card">
+        <img src="quadro-coracao.jpg" alt="Quadro Sagrado Coração" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Sagrado Coração</h3>
+        <div class="preco">€24,00</div>
+        <small>Quadro 30x40cm</small>
+      </div>
+
+      <!-- 15º - Kit Primeira Comunhão -->
+      <div class="card">
+        <img src="kit-comunhao.jpg" alt="Kit Primeira Comunhão" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Kit Primeira Comunhão</h3>
+        <div class="preco">€45,00</div>
+        <small>Completo</small>
+      </div>
+
+      <!-- 16º - Incenso -->
+      <div class="card">
+        <img src="incenso.jpg" alt="Incenso Religioso" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Incenso Religioso</h3>
+        <div class="preco">€7,00</div>
+        <small>Caixa 20 varetas</small>
+      </div>
+
+      <!-- 17º - Cesta de Páscoa -->
+      <div class="card">
+        <img src="cesta-pascoa.jpg" alt="Cesta de Páscoa" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
+        <h3>Cesta de Páscoa</h3>
+        <div class="preco">€32,00</div>
+        <small>Decorada</small>
+      </div>
+
+      <!-- 18º - Vela de Vassouras (último) -->
       <div class="card">
         <img src="vela-vassoura.jpg" alt="Vela para vassouras" style="max-height:150px; width:auto; display:block; margin:0 auto 10px;">
         <h3>Vela para vassouras</h3>
@@ -197,4 +323,4 @@
   </footer>
 
 </body>
-</html>
+                                 </html>
