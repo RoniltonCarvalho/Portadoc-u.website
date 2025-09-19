@@ -1,0 +1,12 @@
+body {font-family: Arial, sans-serif; margin:0; background:white; color:#333;}
+header {background:#a00; color:white; padding:10px; display:flex; align-items:center; justify-content:space-between;}
+header ul {list-style:none; display:flex; gap:15px;}
+header a {color:white; text-decoration:none;}
+.logo {height:50px;}
+.botao-orcamento {background:gold; color:#a00; padding:8px 12px; border-radius:5px; font-weight:bold;}
+.banner {text-align:center; padding:50px; background:linear-gradient(to bottom,#fff,#f9e6e6);}
+.produtos .grid {display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:20px; padding:20px;}
+.produtos .item {border:1px solid #ddd; padding:10px; text-align:center; background:white;}
+.produtos img {max-width:100px;}
+.orcamento form {max-width:400px; margin:auto; display:flex; flex-direction:column; gap:10px;}
+footer {background:#222; color:white; text-align:center; padding:20px; margin-top:20px;}
