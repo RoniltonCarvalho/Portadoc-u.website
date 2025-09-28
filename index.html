@@ -36,14 +36,27 @@
     }
 
     /* Banner */
-    .banner {background: linear-gradient(to bottom, #ffffff, #fde9e9); padding: 28px 16px 36px;}
-    .banner-wrap {max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: center;}
-    .hero-title {color: var(--dourado); font-size: 2.1rem; margin:0 0 8px;}
-    .hero-sub {color: #000; font-weight: bold; margin:0;}
-    #liturgia-resumo p {margin:3px 0;}
-    .santa-box {text-align:right;}
-    .santa-img {max-height:280px; width:auto; object-fit: contain; background:#fff; display:inline-block;}
-
+  /* Banner */<section id="topo" class="banner">
+  <div class="banner-wrap">
+    
+    <!-- Texto esquerda -->
+    <div>
+      <h1 class="hero-title">Bem-vindo à Porta do Céu</h1>
+      <p class="hero-sub">Liturgia de Hoje – <span id="dataLiturgia"></span></p>
+      <div id="liturgia-resumo">
+        <p><strong>1ª Leitura:</strong> <span id="resumo1"></span></p>
+        <p><strong>Salmo:</strong> <span id="resumoSalmo"></span></p>
+        <p><strong>Evangelho:</strong> <span id="resumoEvan"></span></p>
+      </div>
+    </div>
+    
+    <!-- Imagem direita -->
+    <div class="santa-box">
+      <img src="santa-Filomena.jpg" alt="Santa Filomena" class="santa-img">
+    </div>
+    
+  </div>
+</section>
     /* Produtos */
     .section {padding:24px 16px;}
     .section h2 {max-width:1100px; margin:0 auto 16px; color:#000; font-weight:bold;}
