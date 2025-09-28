@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   try {
     const rssUrl = "https://liturgia.cancaonova.com/pb/feed/";
-    const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssUrl);
+    // novo proxy mais estável
+    const proxyUrl = "https://thingproxy.freeboard.io/fetch/" + rssUrl;
 
     const resposta = await fetch(proxyUrl);
-    const data = await resposta.json();
+    const xmlText = await resposta.text();
 
     const parser = new DOMParser();
-    const xml = parser.parseFromString(data.contents, "application/xml");
-
+    const xml = parser.parseFromString(xmlText, "application/xml");
     const items = xml.querySelectorAll("item");
 
     if (items.length > 0) {
@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       // Resumo no banner
       document.getElementById("resumo1").innerText = titulo;
-      document.getElementById("resumoSalmo").innerText = "Salmo: incluído abaixo";
-      document.getElementById("resumoEvan").innerText = "Evangelho: incluído abaixo";
+      document.getElementById("resumoSalmo").innerText = "Salmo: veja abaixo";
+      document.getElementById("resumoEvan").innerText = "Evangelho: veja abaixo";
 
-      // Conteúdo completo
+      // Texto completo
       document.getElementById("liturgia-completa").innerHTML = corpoHtml;
     }
   } catch (error) {
