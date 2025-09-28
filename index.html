@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -36,50 +35,38 @@
     }
 
     /* Banner */
-  /* Banner */* Banner */
-.banner {
-  background: linear-gradient(to bottom, #ffffff, #fde9e9);
-  padding: 20px 16px;
-}
+    .banner {
+      background: linear-gradient(to bottom, #ffffff, #fde9e9);
+      padding: 20px 16px;
+    }
+    .banner-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
+    .banner-wrap .texto {
+      flex: 1;
+      text-align: left;
+      color: #000;
+    }
+    .santa-box {
+      flex: 0 0 150px;
+      text-align: right;
+    }
+    .santa-img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
-.banner-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: nowrap; /* não deixa quebrar pro mobile */
-}
-
-.banner-wrap .texto {
-  flex: 1;
-  text-align: left;
-  color: #000; /* texto preto sempre */
-}
-
-.santa-box {
-  flex: 0 0 150px;   /* largura fixa para imagem */
-  text-align: right;
-}
-
-.santa-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-    
-    <!-- Imagem direita -->
-    <div class="santa-box">
-      <img src="santa-Filomena.jpg" alt="Santa Filomena" class="santa-img">
-    </div>
-    
-  </div>
-</section>
     /* Produtos */
     .section {padding:24px 16px;}
     .section h2 {max-width:1100px; margin:0 auto 16px; color:#000; font-weight:bold;}
-    .grid {max-width:1100px; margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap:18px;}
+    .grid {max-width:1100px; margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:18px;}
     .card {border:1px solid #ddd; border-radius:10px; padding:16px; background:#fff; box-shadow: 0 1px 4px rgba(0,0,0,.06); text-align:center;}
     .card h3 {margin:6px 0 8px; font-size:1.05rem; color: var(--dourado);}
     .card .preco {color:#000; font-weight:700;}
@@ -100,16 +87,16 @@
     .form button {background: var(--rosa); color: #000; border:none; border-radius:8px; padding:12px; font-weight:700; cursor:pointer;}
 
     /* Footer */
-    footer {background:#222; color: #000; text-align:center; padding:18px; font-size:.95rem;}
+    footer {background:#222; color: #fff; text-align:center; padding:18px; font-size:.95rem;}
 
     /* Responsivo */
-    @media (max-width: 860px) {
-      .banner-wrap {grid-template-columns: 1fr;}
-      .santa-box {text-align:center;}
-      .santa-img {max-height:200px;}
-      #apoio {flex-direction:column;}
-      header {flex-direction: column; align-items: flex-start;}
-      .logo-box {margin-top: 10px;}
+    @media (max-width: 768px) {
+      .santa-box {
+        flex: 0 0 100px;
+      }
+      .santa-img {
+        max-height: 150px;
+      }
     }
   </style>
 </head>
@@ -128,16 +115,15 @@
       </ul>
     </nav>
     <div class="logo-box">
-      <img src="Logoportadoceu.jpg" alt="Porta do Céu" class="logo" />
+      <img src="logoportadoceu.jpg" alt="Porta do Céu" class="logo" />
       <a href="#orcamento" class="btn-orc">📩 Orçamento</a>
     </div>
   </header>
 
-  <!-- BANNER COM SANTA FILOMENA E LITURGIA -->
+  <!-- BANNER -->
   <section id="topo" class="banner">
     <div class="banner-wrap">
-      <!-- Esquerda -->
-      <div>
+      <div class="texto">
         <h1 class="hero-title">Bem-vindo à Porta do Céu</h1>
         <p class="hero-sub">Liturgia de Hoje – <span id="dataLiturgia"></span></p>
         <div id="liturgia-resumo">
@@ -146,9 +132,8 @@
           <p><strong>Evangelho:</strong> <span id="resumoEvan"></span></p>
         </div>
       </div>
-      <!-- Direita -->
       <div class="santa-box">
-        <img src="santa-Filomena.jpg" alt="Santa Filomena" class="santa-img">
+        <img src="santa-filomena.jpg" alt="Santa Filomena" class="santa-img">
       </div>
     </div>
   </section>
@@ -181,11 +166,10 @@
         <div class="preco">€12,00</div>
         <small>Livro educativo religioso</small>
       </div>
-      <!-- Continue os outros produtos aqui -->
     </div>
   </section>
 
-  <!-- APOIO (somente Pedido de Oração) -->
+  <!-- APOIO -->
   <section id="apoio">
     <div style="text-align:center;">
       <img src="oracao.jpg" alt="Pedido de Oração">
@@ -198,8 +182,6 @@
   <section id="orcamento" class="orcamento">
     <h2>Pedir Orçamento</h2>
     <form class="form">
-      <input type="text" value="entre em contato" readonly />
-      <input type="text" value="no e-mail" readonly />
       <input type="email" value="jackiie.cardoso@gmail.com" readonly />
       <textarea rows="4" placeholder="Escreva aqui seu pedido"></textarea>
       <button type="submit">Enviar</button>
@@ -209,7 +191,7 @@
   <!-- FOOTER -->
   <footer id="contato">
     <p>© 2025 Porta do Céu - Todos os direitos reservados</p>
-    <p>Contato:  |  | Email: jackiie.cardoso@gmail.com</p>
+    <p>Contato: jackiie.cardoso@gmail.com</p>
   </footer>
 
   <!-- SCRIPT -->
