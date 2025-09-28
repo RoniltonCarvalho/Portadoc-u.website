@@ -8,17 +8,18 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
   document.getElementById("dataLiturgia").innerText = dataFormatada;
 
-  // Plano B: liturgia manual (sempre aparece se automático falhar)
+  // Texto padrão de segurança (fallback)
   const fallback = {
-    resumo: "Leituras de hoje não disponíveis online.",
-    primeira: "Primeira Leitura: (adicione aqui caso necessário)",
-    salmo: "Salmo Responsorial: (adicione aqui manualmente)",
+    resumo: "Leituras de hoje não disponíveis no momento.",
+    primeira: "Primeira Leitura: (adicione manualmente se necessário)",
+    salmo: "Salmo Responsorial: (adicione manualmente se necessário)",
     segunda: "Segunda Leitura: (adicione se houver)",
-    evangelho: "Evangelho: (adicione aqui)"
+    evangelho: "Evangelho: (adicione manualmente se necessário)"
   };
 
   try {
     const rssUrl = "https://liturgia.cancaonova.com/pb/feed/";
+    // usamos /raw para obter somente o XML direto
     const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(rssUrl);
 
     const resposta = await fetch(proxyUrl);
@@ -32,20 +33,20 @@ document.addEventListener("DOMContentLoaded", async function () {
       const titulo = items[0].querySelector("title")?.textContent || fallback.resumo;
       const corpoHtml = items[0].querySelector("description")?.textContent || "";
 
-      // Resumo no banner
+      // Resumo no topo
       document.getElementById("resumo1").innerText = titulo;
       document.getElementById("resumoSalmo").innerText = "Salmo: veja abaixo";
       document.getElementById("resumoEvan").innerText = "Evangelho: veja abaixo";
 
-      // Exibe conteúdo completo
+      // Liturgia completa
       document.getElementById("liturgia-completa").innerHTML = corpoHtml || fallback.primeira;
       return;
     }
   } catch (error) {
-    console.error("Erro ao carregar liturgia:", error);
+    console.error("Erro ao carregar a liturgia:", error);
   }
 
-  // Se der erro → mostra fallback manual
+  // Se der erro, mostra o fallback
   document.getElementById("resumo1").innerText = fallback.resumo;
   document.getElementById("resumoSalmo").innerText = fallback.salmo;
   document.getElementById("resumoEvan").innerText = fallback.evangelho;
