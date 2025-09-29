@@ -43,9 +43,30 @@ nav ul li a {
 }
 
 .hero {
-  background: #ffe6eb;
+  background: pink;
   padding: 20px;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hero h1 {
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.liturgia-box {
+  background: transparent;
+  padding: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.santa-img {
+  max-width: 250px;
+  height: auto;
+  margin-top: 15px;
 }
 
 .liturgia-box {
