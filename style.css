@@ -1,0 +1,86 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #333;
+}
+
+header {
+  background: pink;
+  padding: 10px 20px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 60px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.orcamento-btn {
+  background: gold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.hero {
+  background: #ffe6eb;
+  padding: 20px;
+  text-align: center;
+}
+
+.liturgia-box {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.catalogo {
+  padding: 20px;
+}
+
+.produtos {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.produto {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 180px;
+  text-align: center;
+}
+
+.produto img {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  background: pink;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 20px;
+}
