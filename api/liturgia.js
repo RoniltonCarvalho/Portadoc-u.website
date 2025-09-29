@@ -1,11 +1,10 @@
 export default async function handler(req, res) {
   try {
-    const rssUrl = "https://www.evangelizo.org/rss/evangelho.xml";
-    const resposta = await fetch(rssUrl);
+    const targetUrl = "https://www.evangelizo.org/rss/evangelho.xml";
+    const rssUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetUrl);
 
-    if (!resposta.ok) {
-      throw new Error("Erro ao buscar RSS");
-    }
+    const resposta = await fetch(rssUrl);
+    if (!resposta.ok) throw new Error("Erro no Proxy");
 
     const texto = await resposta.text();
 
