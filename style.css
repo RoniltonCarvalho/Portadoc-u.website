@@ -12,7 +12,7 @@ html, body {
 
 /* Cabeçalho */
 header {
-  background: #FFD700; /* Ouro brilhante */
+  background: #DAA520; /* mesmo dourado da frase */
   padding: 10px 20px;
   width: 100%;
 }
@@ -44,7 +44,7 @@ nav ul li a {
 }
 
 .orcamento-btn {
-  background: #FFD700;
+  background: #DAA520; /* igual ao título e ao menu */
   padding: 8px 12px;
   border-radius: 5px;
   text-decoration: none;
