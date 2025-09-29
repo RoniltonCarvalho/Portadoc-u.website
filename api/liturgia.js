@@ -9,11 +9,11 @@ export default async function handler(req, res) {
 
     const texto = await resposta.text();
 
-    // Retorna como XML com CORS liberado
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Content-Type", "application/xml; charset=utf-8");
     res.status(200).send(texto);
   } catch (err) {
+    console.error("Erro na API:", err);
     res.status(500).json({ erro: "Falha ao carregar liturgia", detalhe: err.message });
   }
 }
