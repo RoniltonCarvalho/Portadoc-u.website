@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porta do Céu</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <nav>
+      <img src="logoportadoceu.jpg" alt="Logo Porta do Céu" class="logo">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Liturgia Diária</a></li>
+        <li><a href="#">Artigos Religiosos</a></li>
+        <li><a href="#">Presentes</a></li>
+        <li><a href="#">Cestas</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+      <a class="orcamento-btn" href="mailto:jackiie.cardoso@gmail.com">📩 Orçamento</a>
+    </nav>
+  </header>
+
+  <!-- Hero / Banner Rosa -->
+  <section class="hero">
+    <h1>Bem-vindo à Porta do Céu</h1>
+    <p>Liturgia de Hoje – <span id="dataLiturgia"></span></p>
+
+    <div class="hero-content">
+      <div class="liturgia-box">
+        <h3>Primeira Leitura</h3>
+        <p id="resumo1">Leitura da carta de São Paulo...</p>
+
+        <h3>Salmo</h3>
+        <p id="resumoSalmo">O Senhor é meu pastor...</p>
+
+        <h3>Segunda Leitura</h3>
+        <p id="resumo2">Leitura da segunda carta...</p>
+
+        <h3>Evangelho</h3>
+        <p id="resumoEvan">Evangelho de São Mateus...</p>
+      </div>
+      <div class="liturgia-img">
+        <img src="santa-filomena.jpg" alt="Santa Filomena" class="santa-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Oração do Dia -->
+  <section class="oracao-dia">
+    <h2>Oração do Dia</h2>
+    <p>“Senhor, guia os nossos passos hoje e sempre.”</p>
+  </section>
+
+  <!-- Quem somos / Igreja + Santo do Dia -->
+  <section class="igreja-santo">
+    <div class="quem-somos">
+      <h2>Sobre a Igreja Católica</h2>
+      <p>A Igreja Católica é uma comunidade universal de fé, esperança e amor, fundada por Jesus Cristo e conduzida pela tradição apostólica. 
+      Seus valores fundamentais são a devoção, a prática da caridade e a evangelização do mundo.</p>
+    </div>
+    <div class="santo-dia">
+      <h2>Santo do Dia</h2>
+      <p id="santoDia">Hoje: São Miguel Arcanjo</p>
+    </div>
+  </section>
+
+  <!-- Notícias/Eventos -->
+  <section class="eventos">
+    <h2>Na Igreja esta semana</h2>
+    <p>Missa de São Francisco – Domingo às 19h</p>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="depoimentos">
+    <h2>O que nossos clientes dizem</h2>
+    <blockquote>“Recebi minha vela de cera, linda e de ótima qualidade 🙏.”</blockquote>
+    <blockquote>“As camisetas com mensagens de fé são maravilhosas ♥.”</blockquote>
+    <blockquote>“Atendimento rápido e carinhoso, gratidão Porta do Céu.”</blockquote>
+  </section>
+
+  <!-- Catálogo -->
+  <section class="catalogo">
+    <h2>Catálogo</h2>
+    <div class="produtos">
+      <div class="produto">
+        <img src="vela.cera.jaque1.jpg" alt="Vela de cera de abelha">
+        <h3>Vela de cera de abelha</h3>
+        <p>€2</p>
+      </div>
+      <div class="produto">
+        <img src="terco-madeira.jpg" alt="Terço em Madeira">
+        <h3>Terço em Madeira</h3>
+        <p>€9,90</p>
+      </div>
+      <div class="produto">
+        <img src="catecismo.jpg" alt="Catecismo Infantil">
+        <h3>Catecismo Infantil</h3>
+        <p>€12,00</p>
+      </div>
+      <div class="produto">
+        <img src="biblia.jpg" alt="Bíblia Sagrada">
+        <h3>Bíblia Sagrada</h3>
+        <p>€25,00</p>
+      </div>
+      <div class="produto">
+        <h3>Camiseta Branca - Mensagem de Fé</h3>
+        <p>"O Senhor é meu pastor, nada me faltará!"</p>
+        <p>€15,00</p>
+      </div>
+      <div class="produto">
+        <h3>Garrafa de Água com Terço</h3>
+        <p>€10,00</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Produto em Destaque -->
+  <section class="destaque">
+    <h2>Produto em Destaque</h2>
+    <p>✨ Terço de Madeira – €9,90 ✨</p>
+  </section>
+
+  <!-- Oração -->
+  <section class="oracao">
+    <h2>Oração</h2>
+    <img src="oracao.jpg" alt="Mão em oração" class="oracao-img">
+    <p>“Senhor, abençoa este lar, esta loja e todos que por aqui passarem.”</p>
+  </section>
+
+  <!-- Doações -->
+  <section class="doacoes">
+    <h2>Ajude nossa missão</h2>
+    <img src="doacao.jpg" alt="Moedas doação" class="doacoes-img">
+    <p>Sua ajuda é muito importante! Faça uma doação de amor e solidariedade para manter nosso trabalho vivo.</p>
+  </section>
+
+  <!-- Catálogo extra -->
+  <section class="catalogo-extra">
+    <h2>Nosso Catálogo de Produtos</h2>
+    <p><strong>Artigos Religiosos</strong></p>
+    <ul>
+      <li>Crucifixos de parede</li>
+      <li>Medalhas de santos</li>
+      <li>Imagens religiosas diversas</li>
+      <li>Escapulários</li>
+      <li>Água benta</li>
+      <li>Incensos</li>
+      <li>Velas votivas</li>
+    </ul>
+    <p><strong>Presentes Cristãos</strong></p>
+    <ul>
+      <li>Camisetas religiosas</li>
+      <li>Canecas personalizadas</li>
+      <li>Quadros / molduras</li>
+      <li>Entre outras...</li>
+    </ul>
+  </section>
+
+  <!-- Contato -->
+  <section class="contato">
+    <h2>Contato</h2>
+    <p>Interessado em algum produto? Envie sua mensagem:</p>
+    <form action="mailto:jackiie.cardoso@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu e-mail" required>
+      <textarea name="mensagem" placeholder="Digite sua mensagem..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <p>📧 <a href="mailto:jackiie.cardoso@gmail.com">jackiie.cardoso@gmail.com</a></p>
+    <p>📷 <a href="https://www.instagram.com/aporta.do.ceu?igsh=MWFuN2FxMzZhamxlaQ==" target="_blank">Instagram Porta do Céu</a></p>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>Home | Catálogo | Contato</p>
+    <p>📷 Instagram | 💬 WhatsApp</p>
+    <p>Feito com fé ✝ pela Porta do Céu</p>
+    <p>&copy; 2025 Porta do Céu - Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Botão WhatsApp fixo (somente visualização, sem número) -->
+  <a href="#" class="whatsapp-btn">💬 WhatsApp</a>
+</body>
+</html>

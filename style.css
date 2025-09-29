@@ -1,0 +1,240 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Cabeçalho */
+header {
+  background: #DAA520;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 60px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.orcamento-btn {
+  background: #DAA520;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* Hero */
+.hero {
+  background: pink;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hero h1 {
+  color: #DAA520;
+  text-align: center;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.liturgia-box {
+  flex: 2;
+}
+
+.liturgia-box h3 {
+  color: #e91e63;
+  margin-bottom: 5px;
+}
+
+.liturgia-img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.santa-img {
+  max-width: 180px;
+  height: auto;
+  display: block;
+}
+
+/* Oração do Dia */
+.oracao-dia {
+  background: pink;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Igreja + Santo do dia */
+.igreja-santo {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.quem-somos, .santo-dia {
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.quem-somos {
+  background: #fdf6ec;
+}
+
+.santo-dia {
+  background: #FFF8DC;
+  text-align: center;
+}
+
+/* Eventos, Depoimentos, Catálogo até Oração */
+/* Fundo rosa até oração inclusive */
+.eventos, .depoimentos, .catalogo, .destaque {
+  background: pink;
+  padding: 20px;
+  text-align: center;
+}
+
+.eventos h2, .depoimentos h2, .catalogo h2, .destaque h2 {
+  color: #e91e63;
+}
+
+.depoimentos blockquote {
+  font-style: italic;
+  margin: 10px auto;
+  max-width: 600px;
+}
+
+/* Catálogo */
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+.produto {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 90%;
+  text-align: center;
+  background: #fff;
+}
+
+.produto img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Destaque */
+.destaque {
+  border: 2px solid #DAA520;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+/* Após Oração fundo claro */
+.oracao, .doacoes, .catalogo-extra, .contato {
+  background: #FFD70020;
+  padding: 20px;
+  text-align: center;
+}
+
+.oracao h2, .doacoes h2, .catalogo-extra h2, .contato h2 {
+  color: #e91e63;
+}
+
+.oracao-img, .doacoes-img {
+  max-width: 120px;
+  display: block;
+  margin: 10px auto;
+}
+
+/* Contato */
+.contato form {
+  max-width: 400px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contato input, .contato textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.contato button {
+  background: #DAA520;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Rodapé */
+footer {
+  background: pink;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+}
