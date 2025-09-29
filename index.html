@@ -1,200 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Porta do Céu ✨ Loja Oficial</title>
-  <style>
-    :root {
-      --rosa: #f8c8dc;     
-      --dourado: #d4af37; 
-    }
-    body {font-family: Arial, sans-serif; margin:0; background:#fff; color: #000;}
-    h2 {font-weight:bold;}
-
-    /* Header */
-    header {
-      background: var(--rosa);
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .top-nav ul {list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;}
-    .top-nav a {color: #000; text-decoration: none; font-weight: bold;}
-    .logo-box {display: flex; align-items: center; gap: 20px;}
-    .logo {height: 58px; width: auto;}
-    .btn-orc {
-      background: var(--dourado);
-      color: var(--rosa);
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 6px;
-      text-decoration: none;
-    }
-
-    /* Banner */
-    .banner {
-      background: linear-gradient(to bottom, #ffffff, #fde9e9);
-      padding: 20px 16px;
-    }
-    .banner-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: nowrap;
-    }
-    .banner-wrap .texto {
-      flex: 1;
-      text-align: left;
-      color: #000;
-    }
-    .santa-box {
-      flex: 0 0 150px;
-      text-align: right;
-    }
-    .santa-img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Produtos */
-    .section {padding:24px 16px;}
-    .section h2 {max-width:1100px; margin:0 auto 16px; color:#000; font-weight:bold;}
-    .grid {max-width:1100px; margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:18px;}
-    .card {border:1px solid #ddd; border-radius:10px; padding:16px; background:#fff; box-shadow: 0 1px 4px rgba(0,0,0,.06); text-align:center;}
-    .card h3 {margin:6px 0 8px; font-size:1.05rem; color: var(--dourado);}
-    .card .preco {color:#000; font-weight:700;}
-    .card small {color:#000;}
-
-    /* Apoio */
-    #apoio {display:flex; justify-content:center; align-items:center; gap:30px; padding:40px 16px;}
-    #apoio img {max-height:140px; margin-bottom:12px;}
-
-    /* Orçamento */
-    .orcamento {background:#f8f8f8; padding:34px 16px;}
-    .orcamento h2 {text-align:center; color:#000; margin-top:0; font-weight:bold;}
-    .form {max-width:420px; margin:12px auto 0; display:flex; flex-direction:column; gap:10px;}
-    .form input, .form textarea {
-      padding:10px 12px; border:1px solid #ccc; border-radius:8px; font-size:1rem; width:100%;
-      background:#fff; color:#000;
-    }
-    .form button {background: var(--rosa); color: #000; border:none; border-radius:8px; padding:12px; font-weight:700; cursor:pointer;}
-
-    /* Footer */
-    footer {background:#222; color: #fff; text-align:center; padding:18px; font-size:.95rem;}
-
-    /* Responsivo */
-    @media (max-width: 768px) {
-      .santa-box {
-        flex: 0 0 100px;
-      }
-      .santa-img {
-        max-height: 150px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porta do Céu</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-
-  <!-- HEADER / MENU -->
+  <!-- Cabeçalho -->
   <header>
-    <nav class="top-nav">
+    <nav>
+      <img src="logoportadoceu.jpg" alt="Logo Porta do Céu" class="logo">
       <ul>
-        <li><a href="#topo">Home</a></li>
-        <li><a href="#liturgia">Liturgia Diária</a></li>
-        <li><a href="#produtos">Artigos Religiosos</a></li>
-        <li><a href="#produtos">Presentes</a></li>
-        <li><a href="#produtos">Cestas</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Liturgia Diária</a></li>
+        <li><a href="#">Artigos Religiosos</a></li>
+        <li><a href="#">Presentes</a></li>
+        <li><a href="#">Cestas</a></li>
+        <li><a href="#">Contato</a></li>
       </ul>
+      <a class="orcamento-btn" href="mailto:contato@portadoceu.com">📩 Orçamento</a>
     </nav>
-    <div class="logo-box">
-      <img src="logoportadoceu.jpg" alt="Porta do Céu" class="logo" />
-      <a href="#orcamento" class="btn-orc">📩 Orçamento</a>
-    </div>
   </header>
 
-  <!-- BANNER -->
-  <section id="topo" class="banner">
-    <div class="banner-wrap">
-      <div class="texto">
-        <h1 class="hero-title">Bem-vindo à Porta do Céu</h1>
-        <p class="hero-sub">Liturgia de Hoje – <span id="dataLiturgia"></span></p>
-        <div id="liturgia-resumo">
-          <p><strong>1ª Leitura:</strong> <span id="resumo1"></span></p>
-          <p><strong>Salmo:</strong> <span id="resumoSalmo"></span></p>
-          <p><strong>Evangelho:</strong> <span id="resumoEvan"></span></p>
-        </div>
-      </div>
-      <div class="santa-box">
-        <img src="santa-filomena.jpg" alt="Santa Filomena" class="santa-img">
-      </div>
+  <!-- Hero / Banner Rosa -->
+  <section class="hero">
+    <h1>Bem-vindo à Porta do Céu</h1>
+    <p>Liturgia de Hoje – <span id="dataLiturgia"></span></p>
+
+    <div id="liturgia-resumo" class="liturgia-box">
+      <h3>Primeira Leitura</h3>
+      <p id="resumo1">Carregando...</p>
+
+      <h3>Salmo</h3>
+      <p id="resumoSalmo">Carregando...</p>
+
+      <h3>Evangelho</h3>
+      <p id="resumoEvan">Carregando...</p>
     </div>
+
+    <img src="santa-filomena.jpg" alt="Santa Filomena" class="santa-img">
   </section>
 
-  <!-- LITURGIA COMPLETA -->
-  <section id="liturgia" class="section" style="background:#fafafa; padding:30px;">
-    <h2>Liturgia Diária</h2>
-    <div id="liturgia-completa">Carregando...</div>
-  </section>
-
-  <!-- CATÁLOGO -->
-  <section id="produtos" class="section">
+  <!-- Catálogo -->
+  <section class="catalogo">
     <h2>Catálogo</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="vela.cera.jaque1.jpg" alt="Vela de cera de abelha" style="max-height:150px; width:auto; margin:0 auto 10px;">
+    <div class="produtos">
+      <div class="produto">
+        <img src="vela.cera.jaque1.jpg" alt="Vela de cera de abelha">
         <h3>Vela de cera de abelha</h3>
-        <div class="preco">€2</div>
-        <small>Frete a combinar</small>
+        <p>€2</p>
       </div>
-      <div class="card">
-        <img src="terco-madeira.jpg" alt="Terço em madeira" style="max-height:150px; width:auto; margin:0 auto 10px;">
+      <div class="produto">
+        <img src="terco-madeira.jpg" alt="Terço em Madeira">
         <h3>Terço em Madeira</h3>
-        <div class="preco">€9,90</div>
-        <small>Devocional com crucifixo</small>
+        <p>€9,90</p>
       </div>
-      <div class="card">
-        <img src="catecismo.jpg" alt="Catecismo Infantil" style="max-height:150px; width:auto; margin:0 auto 10px;">
+      <div class="produto">
+        <img src="catecismo.jpg" alt="Catecismo Infantil">
         <h3>Catecismo Infantil</h3>
-        <div class="preco">€12,00</div>
-        <small>Livro educativo religioso</small>
+        <p>€12,00</p>
+      </div>
+      <div class="produto">
+        <img src="biblia.jpg" alt="Bíblia Sagrada">
+        <h3>Bíblia Sagrada</h3>
+        <p>€25,00</p>
       </div>
     </div>
   </section>
 
-  <!-- APOIO -->
-  <section id="apoio">
-    <div style="text-align:center;">
-      <img src="oracao.jpg" alt="Pedido de Oração">
-      <h3 style="color:var(--dourado);">Pedido de Oração</h3>
-      <p><a href="#contato" style="color:#000; font-weight:bold;">Clique aqui e deixe seu pedido 🙏</a></p>
-    </div>
-  </section>
-
-  <!-- ORÇAMENTO -->
-  <section id="orcamento" class="orcamento">
-    <h2>Pedir Orçamento</h2>
-    <form class="form">
-      <input type="email" value="jackiie.cardoso@gmail.com" readonly />
-      <textarea rows="4" placeholder="Escreva aqui seu pedido"></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="contato">
-    <p>© 2025 Porta do Céu - Todos os direitos reservados</p>
-    <p>Contato: jackiie.cardoso@gmail.com</p>
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Porta do Céu - Todos os direitos reservados.</p>
   </footer>
-
-  <!-- SCRIPT -->
-  <script src="script.js"></script>
 </body>
 </html>
