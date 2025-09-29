@@ -208,3 +208,19 @@ footer {
   width: 100%;
   box-sizing: border-box;
 }
+.contato a {
+  display: inline-block;
+  margin: 5px 0;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  background: #DAA520;   /* dourado igual menu e título */
+  color: black;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.contato a:hover {
+  background: #e91e63;   /* rosa ao passar o mouse */
+  color: white;
+}
