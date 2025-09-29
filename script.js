@@ -4,52 +4,63 @@ document.addEventListener("DOMContentLoaded", async function () {
     weekday: "long",
     day: "numeric",
     month: "long",
-    year: "numeric"
+    year: "numeric",
   });
   document.getElementById("dataLiturgia").innerText = dataFormatada;
 
-  // Texto padrão de segurança (fallback)
+  // Texto de fallback
   const fallback = {
-    resumo: "Leituras de hoje não disponíveis no momento.",
-    primeira: "Primeira Leitura: (adicione manualmente se necessário)",
-    salmo: "Salmo Responsorial: (adicione manualmente se necessário)",
-    segunda: "Segunda Leitura: (adicione se houver)",
-    evangelho: "Evangelho: (adicione manualmente se necessário)"
+    resumo: "⚠️ Leituras de hoje não disponíveis no momento.",
+    primeira: "Primeira Leitura: consulte diretamente no site da CNBB ou Canção Nova.",
+    salmo: "Salmo: consulte diretamente.",
+    segunda: "Segunda Leitura (se houver).",
+    evangelho: "Evangelho: consulte diretamente.",
   };
 
   try {
+    // URL do feed
     const rssUrl = "https://liturgia.cancaonova.com/pb/feed/";
-    // usamos /raw para obter somente o XML direto
-    const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(rssUrl);
+
+    // Usar proxy para evitar problema de CORS
+    const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssUrl);
 
     const resposta = await fetch(proxyUrl);
-    const xmlText = await resposta.text();
+    if (!resposta.ok) throw new Error("Erro ao buscar o feed");
 
+    const data = await resposta.json();
     const parser = new DOMParser();
-    const xml = parser.parseFromString(xmlText, "application/xml");
-    const items = xml.querySelectorAll("item");
+    const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+
+    const items = xmlDoc.querySelectorAll("item");
 
     if (items.length > 0) {
       const titulo = items[0].querySelector("title")?.textContent || fallback.resumo;
-      const corpoHtml = items[0].querySelector("description")?.textContent || "";
+      const descricao = items[0].querySelector("description")?.textContent || "";
 
-      // Resumo no topo
+      // Coloca resumo no topo
       document.getElementById("resumo1").innerText = titulo;
-      document.getElementById("resumoSalmo").innerText = "Salmo: veja abaixo";
-      document.getElementById("resumoEvan").innerText = "Evangelho: veja abaixo";
+      document.getElementById("resumoSalmo").innerText = descricao.includes("Salmo") ? descricao : fallback.salmo;
+      document.getElementById("resumoEvan").innerText = descricao.includes("Evangelho") ? descricao : fallback.evangelho;
 
-      // Liturgia completa
-      document.getElementById("liturgia-completa").innerHTML = corpoHtml || fallback.primeira;
-      return;
+      // Conteúdo completo
+      document.getElementById("liturgia-completa").innerHTML = descricao || fallback.primeira;
+    } else {
+      throw new Error("Nenhum item encontrado no feed");
     }
-  } catch (error) {
-    console.error("Erro ao carregar a liturgia:", error);
-  }
+  } catch (erro) {
+    console.error("Erro ao carregar liturgia:", erro);
 
-  // Se der erro, mostra o fallback
-  document.getElementById("resumo1").innerText = fallback.resumo;
-  document.getElementById("resumoSalmo").innerText = fallback.salmo;
-  document.getElementById("resumoEvan").innerText = fallback.evangelho;
-  document.getElementById("liturgia-completa").innerHTML =
-    `<h3>$${fallback.primeira}</h3><p>$${fallback.salmo}</p><p>$${fallback.segunda}</p><p>$${fallback.evangelho}</p>`;
+    // Se erro → mostrar fallback
+    document.getElementById("resumo1").innerText = fallback.resumo;
+    document.getElementById("resumoSalmo").innerText = fallback.salmo;
+    document.getElementById("resumoEvan").innerText = fallback.evangelho;
+    document.getElementById("liturgia-completa").innerHTML = `
+      <h3>$${fallback.primeira}</h3>
+      <p>$${fallback.salmo}</p>
+      <p>$${fallback.segunda}</p>
+      <p>$${fallback.evangelho}</p>
+      <p>Acesse diretamente: 
+        <a href="https://liturgia.cancaonova.com/pb/" target="_blank">Canção Nova</a>
+      </p>`;
+  }
 });
