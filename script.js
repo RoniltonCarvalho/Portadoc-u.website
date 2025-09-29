@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const hoje = new Date();
   const dataIso = hoje.toISOString().split("T")[0]; // YYYY-MM-DD
 
-  // Mostrar data no topo
+  // Mostrar data formatada no topo
   const dataFormatada = hoje.toLocaleDateString("pt-BR", {
     weekday: "long",
     day: "numeric",
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   document.getElementById("dataLiturgia").innerText = dataFormatada;
 
-  // Fallback padrão
+  // Fallback
   const fallback = {
     primeira: "⚠️ Primeira Leitura não disponível.",
     salmo: "⚠️ Salmo não disponível.",
@@ -20,34 +20,31 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   try {
-    // URL da API do Evangelizo
+    // Evangelizo API via corsproxy.io
     const apiUrl = `https://api.evangelizo.org/v2/reading/day?date=$${dataIso}&lang=PT`;
-    const proxyUrl = `https://api.allorigins.win/get?url=$${encodeURIComponent(apiUrl)}`;
+    const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(apiUrl);
 
-    // Buscar via proxy para evitar CORS
     const resposta = await fetch(proxyUrl);
-    if (!resposta.ok) throw new Error("Erro no proxy");
+    if (!resposta.ok) throw new Error("Erro ao buscar leituras");
+    const data = await resposta.json();
 
-    const resultado = await resposta.json();
-    const data = JSON.parse(resultado.contents);
-
-    // Buscar as leituras
+    // Leituras
     const primeira = data?.readings?.find(r => r.type === "reading_1")?.text || fallback.primeira;
     const salmo = data?.readings?.find(r => r.type === "psalm")?.text || fallback.salmo;
     const segunda = data?.readings?.find(r => r.type === "reading_2")?.text || "";
     const evangelho = data?.readings?.find(r => r.type === "gospel")?.text || fallback.evangelho;
 
-    // Preencher no resumo
+    // Resumo (parte de cima)
     document.getElementById("resumo1").innerText = primeira;
     document.getElementById("resumoSalmo").innerText = salmo;
     document.getElementById("resumoEvan").innerText = evangelho;
 
-    // Preencher na seção completa
+    // Liturgia completa
     document.getElementById("liturgia-completa").innerHTML = `
       <h3>Primeira Leitura</h3><p>$${primeira}</p>
       $${segunda ? `<h3>Segunda Leitura</h3><p>$${segunda}</p>` : ""}
       <h3>Salmo</h3><p>$${salmo}</p>
-      <h3>Evangelho</h3><p>${evangelho}</p>
+      <h3>Evangelho</h3><p>$${evangelho}</p>
     `;
   } catch (erro) {
     console.error("Erro ao carregar leituras:", erro);
