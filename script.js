@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   `;
 
   try {
-    // Chama a API no próprio projeto Vercel
+    // Chama a função do Vercel
     const resposta = await fetch("/api/liturgia");
     if (!resposta.ok) throw new Error("Erro no servidor");
 
