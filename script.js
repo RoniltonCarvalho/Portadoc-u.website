@@ -1,41 +1,37 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const hoje = new Date();
-  const dataFormatada = hoje.toLocaleDateString("pt-BR", {
+  const dataFormatada = hoje.toISOString().split("T")[0]; // exemplo: 2025-09-29
+  const dataFormatadaBr = hoje.toLocaleDateString("pt-BR", {
     weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric"
   });
-  document.getElementById("dataLiturgia").innerText = dataFormatada;
 
-  const fallback = `
-    ⚠️ Não foi possível carregar as leituras de hoje.<br>
-    Acesse diretamente em: <a href="https://evangelizo.org" target="_blank">Evangelizo.org</a>
-  `;
+  document.getElementById("dataLiturgia").innerText = dataFormatadaBr;
 
   try {
-    // Chama a função do Vercel
-    const resposta = await fetch("/api/liturgia");
-    if (!resposta.ok) throw new Error("Erro no servidor");
+    const resposta = await fetch("https://liturgiadiaria.site/api/" + dataFormatada);
+    if (!resposta.ok) throw new Error("Erro API");
 
-    const xmlText = await resposta.text();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(xmlText, "application/xml");
+    const dados = await resposta.json();
 
-    const item = xml.querySelector("item");
-    if (item) {
-      const titulo = item.querySelector("title")?.textContent || "Liturgia do Dia";
-      const descricao = item.querySelector("description")?.textContent || "";
+    // Atualiza resumos no topo
+    document.getElementById("resumo1").innerText = dados.primeira || "Leitura não disponível";
+    document.getElementById("resumoSalmo").innerText = dados.salmo || "Salmo não disponível";
+    document.getElementById("resumoEvan").innerText = dados.evangelho || "Evangelho não disponível";
 
-      document.getElementById("resumo1").innerText = titulo;
-      document.getElementById("resumoSalmo").innerText = "Salmo: veja abaixo";
-      document.getElementById("resumoEvan").innerText = "Evangelho: veja abaixo";
-      document.getElementById("liturgia-completa").innerHTML = descricao;
-      return;
-    }
+    // Mostra a liturgia completa
+    document.getElementById("liturgia-completa").innerHTML = `
+      <h3>Primeira Leitura</h3><p>$${dados.primeira}</p>
+      <h3>Salmo</h3><p>$${dados.salmo}</p>
+      <h3>Evangelho</h3><p>$${dados.evangelho}</p>
+    `;
   } catch (e) {
-    console.error("Erro ao carregar liturgia:", e);
+    console.error("Erro:", e);
+    document.getElementById("liturgia-completa").innerHTML = `
+      ⚠️ Não foi possível carregar as leituras de hoje.
+      Consulte: <a href="https://www.evangelizo.org" target="_blank">Evangelizo.org</a>
+    `;
   }
-
-  document.getElementById("liturgia-completa").innerHTML = fallback;
 });
