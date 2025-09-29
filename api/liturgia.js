@@ -1,18 +1,51 @@
 export default async function handler(req, res) {
   try {
-    const targetUrl = "https://www.evangelizo.org/rss/evangelho.xml";
-    const rssUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetUrl);
+    // URL Evangelizo (evangelho)
+    const evangelizoUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://www.evangelizo.org/rss/evangelho.xml");
 
-    const resposta = await fetch(rssUrl);
-    if (!resposta.ok) throw new Error("Erro no Proxy");
+    // URL A12 (fallback)
+    const a12Url = "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://www.a12.com/rss");
 
-    const texto = await resposta.text();
+    // 1ª tentativa → Evangelizo
+    let resposta = await fetch(evangelizoUrl);
+    if (!resposta.ok) throw new Error("Evangelizo indisponível");
+    let texto = await resposta.text();
 
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Content-Type", "application/xml; charset=utf-8");
-    res.status(200).send(texto);
+    if (texto && texto.length > 50) {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Content-Type", "application/xml; charset=utf-8");
+      return res.status(200).send(texto);
+    }
+
+    // 2ª tentativa → A12
+    resposta = await fetch(a12Url);
+    if (!resposta.ok) throw new Error("A12 indisponível");
+    texto = await resposta.text();
+
+    if (texto && texto.length > 50) {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Content-Type", "application/xml; charset=utf-8");
+      return res.status(200).send(texto);
+    }
+
+    // 3ª tentativa → fallback fixo
+    throw new Error("Nenhuma fonte disponível");
   } catch (err) {
-    console.error("Erro na API:", err);
-    res.status(500).json({ erro: "Falha ao carregar liturgia", detalhe: err.message });
+    console.error("Erro final na API:", err);
+    res.status(200).send(`
+      <rss>
+        <channel>
+          <item>
+            <title>Leituras não disponíveis no momento</title>
+            <description>
+              ⚠️ Acesse diretamente em: 
+              <a href="https://www.evangelizo.org" target="_blank">Evangelizo.org</a>
+              ou 
+              <a href="https://www.a12.com" target="_blank">A12.com</a>
+            </description>
+          </item>
+        </channel>
+      </rss>
+    `);
   }
 }
