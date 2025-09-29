@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const hoje = new Date();
+  const dataISO = hoje.toISOString().split("T")[0]; // Ex: 2025-09-28
   const dataFormatada = hoje.toLocaleDateString("pt-BR", {
     weekday: "long",
     day: "numeric",
@@ -8,42 +9,51 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
   document.getElementById("dataLiturgia").innerText = dataFormatada;
 
-  // Mensagem fallback
   const fallback = `
-    ⚠️ Leituras indisponíveis.<br>
-    Consulte em <a href="https://www.evangelizo.org" target="_blank">Evangelizo.org</a>
+    ⚠️ Leituras indisponíveis online.<br>
+    Consulte: <a href="https://www.evangelizo.org" target="_blank">Evangelizo.org</a>
   `;
 
+  // 1ª tentativa: RSS
   try {
-    // RSS do Evangelizo (via proxy AllOrigins)
     const rssUrl = "https://api.allorigins.win/raw?url=" 
       + encodeURIComponent("https://www.evangelizo.org/rss/evangelho.xml");
 
     const resposta = await fetch(rssUrl);
-    if (!resposta.ok) throw new Error("RSS não disponível");
+    if (resposta.ok) {
+      const xmlText = await resposta.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(xmlText, "application/xml");
 
-    const xmlText = await resposta.text();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(xmlText, "application/xml");
+      const item = xml.querySelector("item");
+      if (item) {
+        document.getElementById("liturgia-completa").innerHTML =
+          item.querySelector("description")?.textContent || fallback;
+        return;
+      }
+    }
+  } catch (e) {
+    console.error("Erro RSS:", e);
+  }
 
-    const item = xml.querySelector("item");
-    if (item) {
-      const titulo = item.querySelector("title")?.textContent || "Liturgia do Dia";
-      const descricao = item.querySelector("description")?.textContent || "";
+  // 2ª tentativa: liturgia.json local
+  try {
+    const respLocal = await fetch("liturgia.json");
+    const todas = await respLocal.json();
+    const dados = todas[dataISO];
 
-      // Atualiza resumo no topo
-      document.getElementById("resumo1").innerText = titulo;
-      document.getElementById("resumoSalmo").innerText = "Salmo: veja abaixo";
-      document.getElementById("resumoEvan").innerText = "Evangelho: veja abaixo";
-
-      // Mostra algo no corpo
-      document.getElementById("liturgia-completa").innerHTML = descricao;
+    if (dados) {
+      document.getElementById("liturgia-completa").innerHTML = `
+        <h3>Primeira Leitura</h3><p>$${dados.primeira}</p>
+        <h3>Salmo</h3><p>$${dados.salmo}</p>
+        <h3>Evangelho</h3><p>${dados.evangelho}</p>
+      `;
       return;
     }
   } catch (e) {
-    console.error("Erro:", e);
+    console.error("Erro JSON local:", e);
   }
 
-  // Se tudo falhar -> mostra fallback
+  // Se nada der certo
   document.getElementById("liturgia-completa").innerHTML = fallback;
 });
