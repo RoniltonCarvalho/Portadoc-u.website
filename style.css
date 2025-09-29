@@ -105,3 +105,45 @@ footer {
   font-size: 14px;
   margin-top: 20px;
 }
+.hero {
+  background: pink;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.liturgia-box {
+  flex: 2;
+  text-align: left;
+}
+
+.liturgia-box h3 {
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.liturgia-box p {
+  margin-top: 0;
+  color: #333;
+}
+
+.liturgia-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.santa-img {
+  max-width: 200px;
+  height: auto;
+}
