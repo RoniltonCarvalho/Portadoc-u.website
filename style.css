@@ -1,21 +1,28 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0 auto;
+/* RESET FULL WIDTH */
+html, body {
+  margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100%;     /* nunca limitar */
+  overflow-x: hidden;  /* evita barra lateral no celular */
+  font-family: Arial, sans-serif;
   background-color: #fff;
   color: #333;
-  max-width: 1200px;
 }
 
+/* Cabeçalho */
 header {
   background: #FFD700; /* Ouro brilhante */
   padding: 10px 20px;
+  width: 100%;
 }
 
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -45,6 +52,7 @@ nav ul li a {
   font-weight: bold;
 }
 
+/* Hero */
 .hero {
   background: pink;
   padding: 20px;
@@ -53,7 +61,8 @@ nav ul li a {
 }
 
 .hero h1 {
-  color: #DAA520;
+  color: #DAA520; /* dourado ouro */
+  text-align: center;
 }
 
 .hero-content {
@@ -88,11 +97,16 @@ nav ul li a {
   display: block;
 }
 
+/* Sobre a Igreja + Santo do Dia */
 .igreja-santo {
   display: flex;
   gap: 30px;
   padding: 20px;
   justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .quem-somos, .santo-dia {
@@ -102,11 +116,11 @@ nav ul li a {
 }
 
 .quem-somos {
-  background: #fdf6ec;
+  background: #fdf6ec; /* bege claro */
 }
 
 .santo-dia {
-  background: #FFF8DC;
+  background: #FFF8DC; /* bege diferenciado */
   text-align: center;
 }
 
@@ -114,10 +128,14 @@ nav ul li a {
   padding: 20px;
   text-align: center;
   background: #FFD70020;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.catalogo h2, .contato h2, .oracao h2, .doacoes h2, .catalogo-extra h2, .quem-somos h2, .santo-dia h2 {
-  color: #e91e63;
+.catalogo h2, .contato h2, .oracao h2, 
+.doacoes h2, .catalogo-extra h2, 
+.quem-somos h2, .santo-dia h2 {
+  color: #e91e63; /* títulos rosa */
 }
 
 .produtos {
@@ -133,6 +151,7 @@ nav ul li a {
   padding: 10px;
   width: 200px;
   text-align: center;
+  background: #fff;
 }
 
 .produto img {
@@ -140,10 +159,13 @@ nav ul li a {
   height: auto;
 }
 
+/* Contato */
 .contato {
   padding: 20px;
   text-align: center;
   background: #FFD70020;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contato form {
@@ -169,16 +191,20 @@ nav ul li a {
   border-radius: 5px;
 }
 
+/* Imagens auxiliares */
 .oracao-img, .doacoes-img {
   max-width: 120px;
   display: block;
   margin: 10px auto;
 }
 
+/* Rodapé */
 footer {
   background: pink;
   text-align: center;
   padding: 10px;
   font-size: 14px;
   margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
